@@ -16,39 +16,18 @@
 body {
   background-color: var(--azul-noite);
   background-image:
-    /* fios finos de mármore — dourados */
-    repeating-linear-gradient(
-      108deg,
-      transparent,
-      transparent 55px,
-      rgba(201,168,76,0.13) 55px,
-      rgba(201,168,76,0.13) 56px,
-      transparent 56px,
-      transparent 130px,
-      rgba(201,168,76,0.07) 130px,
-      rgba(201,168,76,0.07) 131px
-    ),
-    /* fios finos de mármore — brancos */
-    repeating-linear-gradient(
-      74deg,
-      transparent,
-      transparent 80px,
-      rgba(255,255,255,0.08) 80px,
-      rgba(255,255,255,0.08) 81px,
-      transparent 81px,
-      transparent 190px,
-      rgba(255,255,255,0.05) 190px,
-      rgba(255,255,255,0.05) 191px
-    ),
-    /* brilhos de luz — reflexo de mármore polido */
+    /* veios orgânicos de mármore (SVG feTurbulence) */
+    url('assets/marble-veins.svg'),
+    /* reflexos de luz — superfície polida */
     radial-gradient(ellipse at 15% 18%, rgba(255,255,255,0.13) 0%, transparent 38%),
     radial-gradient(ellipse at 80% 78%, rgba(255,255,255,0.09) 0%, transparent 35%),
     radial-gradient(ellipse at 55% 45%, rgba(255,255,255,0.04) 0%, transparent 55%),
-    /* manchas e veios largos */
     linear-gradient(128deg, transparent 8%,  rgba(255,255,255,0.07) 22%, transparent 34%),
     linear-gradient(218deg, transparent 15%, rgba(255,255,255,0.06) 32%, transparent 48%),
     linear-gradient(82deg,  transparent 5%,  rgba(201,168,76,0.09) 28%, transparent 52%),
     linear-gradient(162deg, transparent 20%, rgba(255,255,255,0.05) 42%, transparent 60%);
+  background-size: 100% 100%, auto, auto, auto, auto, auto, auto, auto;
+  background-repeat: no-repeat;
   color: var(--branco);
   font-family: 'Inter', system-ui, sans-serif;
   line-height: 1.6;
