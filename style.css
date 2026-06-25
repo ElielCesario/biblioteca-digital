@@ -89,6 +89,41 @@ nav a:hover { color: var(--branco); }
   margin: 0 auto 2.5rem;
 }
 
+/* ── CITAÇÃO PLATÃO ── */
+.platao {
+  margin: 2rem auto;
+  max-width: 480px;
+  padding: 1.5rem 2rem;
+  border-top: 1px solid rgba(201, 168, 76, 0.25);
+  border-bottom: 1px solid rgba(201, 168, 76, 0.25);
+  text-align: center;
+}
+
+.platao-ornamento {
+  display: block;
+  color: var(--dourado);
+  font-size: 1.4rem;
+  margin-bottom: 0.75rem;
+  opacity: 0.7;
+}
+
+.platao p {
+  font-family: 'EB Garamond', Georgia, serif;
+  font-style: italic;
+  font-size: 1.25rem;
+  color: var(--branco);
+  line-height: 1.5;
+  margin-bottom: 0.6rem;
+}
+
+.platao cite {
+  font-size: 0.75rem;
+  letter-spacing: 0.06em;
+  color: var(--dourado);
+  font-style: normal;
+  text-transform: uppercase;
+}
+
 .hero-badge {
   display: inline-block;
   background: var(--dourado-fundo);
@@ -318,3 +353,302 @@ footer a:hover { color: var(--branco); }
   .card-poema { flex-direction: column; }
   .card-poema .card-capa { width: 100%; aspect-ratio: 3/2; object-position: top; }
 }
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BiblioTech — Eliel Cesário</title>
+  <meta name="description" content="Ebooks de dados, IA e renda extra. Acesso a bots inteligentes de investimento. Conteúdo direto ao ponto, feito para quem quer resultados.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- ── HEADER ── -->
+<header>
+  <span class="logo">BiblioTech</span>
+  <nav>
+    <a href="#dados">Dados & BI</a>
+    <a href="#ia">IA & Renda</a>
+    <a href="#literatura">Literatura</a>
+    <a href="#bots">Bots</a>
+    <a href="mailto:eliel.gabriel@icloud.com">Contato</a>
+  </nav>
+</header>
+
+<!-- ── HERO ── -->
+<section class="hero">
+  <span class="hero-linha"></span>
+  <h1>Conhecimento que <span>gera resultado</span></h1>
+  <p>Ebooks diretos ao ponto sobre dados, IA e renda extra — e acesso a bots inteligentes de investimento. Tudo em um só lugar.</p>
+
+  <blockquote class="platao">
+    <span class="platao-ornamento">❧</span>
+    <p>Não são admitidos ignorantes em geometria</p>
+    <cite>— Inscrição na porta da Academia de Platão</cite>
+  </blockquote>
+
+  <span class="hero-badge">✦ Conteúdo em Português</span>
+</section>
+
+<!-- ── SEÇÃO: DADOS & BI ── -->
+<section class="secao" id="dados">
+  <div class="secao-header">
+    <div class="secao-linha"></div>
+    <h2 class="secao-titulo">Ferramentas de Dados & BI</h2>
+    <div class="secao-linha"></div>
+  </div>
+
+  <div class="grid">
+
+    <!-- Excel -->
+    <article class="card">
+      <span class="card-tag">Excel</span>
+      <h3>Excel: Básico ao Avançado</h3>
+      <p>Do zero às fórmulas avançadas, tabelas dinâmicas e dashboards. O guia completo para dominar a ferramenta mais usada no mercado.</p>
+      <div class="card-footer">
+        <div class="preco">
+          R$ 27<small>pagamento único</small>
+        </div>
+        <a class="btn" href="#gumroad-excel" target="_blank" rel="noopener">Comprar</a>
+      </div>
+    </article>
+
+    <!-- SQL -->
+    <article class="card">
+      <span class="card-tag">SQL</span>
+      <h3>SQL Server — Curso Completo</h3>
+      <p>Consultas, joins, subqueries, stored procedures e otimização. Do básico ao avançado com exemplos práticos do mercado.</p>
+      <div class="card-footer">
+        <div class="preco">
+          R$ 27<small>pagamento único</small>
+        </div>
+        <a class="btn" href="#gumroad-sql" target="_blank" rel="noopener">Comprar</a>
+      </div>
+    </article>
+
+    <!-- Power BI -->
+    <article class="card">
+      <span class="card-tag">Power BI</span>
+      <h3>Power BI — Do Dado ao Dashboard</h3>
+      <p>Conecte fontes, modele dados com DAX e crie relatórios visuais que impressionam. Curso completo com casos reais.</p>
+      <div class="card-footer">
+        <div class="preco">
+          R$ 27<small>pagamento único</small>
+        </div>
+        <a class="btn" href="#gumroad-powerbi" target="_blank" rel="noopener">Comprar</a>
+      </div>
+    </article>
+
+    <!-- Looker -->
+    <article class="card">
+      <span class="card-tag">Looker</span>
+      <h3>Looker Platform — Curso Completo</h3>
+      <p>A ferramenta de BI do Google Cloud: LookML, explorations e dashboards corporativos. Domine o Looker do zero.</p>
+      <div class="card-footer">
+        <div class="preco">
+          R$ 27<small>pagamento único</small>
+        </div>
+        <a class="btn" href="#gumroad-looker" target="_blank" rel="noopener">Comprar</a>
+      </div>
+    </article>
+
+    <!-- Storytelling -->
+    <article class="card">
+      <span class="card-tag">Dados</span>
+      <h3>Storytelling com Dados — Guia Completo</h3>
+      <p>Como transformar números em narrativas que convencem. Visualizações eficientes, escolha de gráficos e comunicação executiva.</p>
+      <div class="card-footer">
+        <div class="preco">
+          R$ 27<small>pagamento único</small>
+        </div>
+        <a class="btn" href="#gumroad-storytelling" target="_blank" rel="noopener">Comprar</a>
+      </div>
+    </article>
+
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ── SEÇÃO: IA & RENDA ── -->
+<section class="secao" id="ia">
+  <div class="secao-header">
+    <div class="secao-linha"></div>
+    <h2 class="secao-titulo">IA & Renda Extra</h2>
+    <div class="secao-linha"></div>
+  </div>
+
+  <div class="grid">
+
+    <!-- IA para Analista -->
+    <article class="card">
+      <span class="card-tag">Carreira</span>
+      <h3>IA para Analista de Dados — Do Zero à Vaga</h3>
+      <p>Como usar IA para acelerar sua carreira em dados: ferramentas, portfólio e estratégias para conquistar a vaga que você quer.</p>
+      <div class="card-footer">
+        <div class="preco">
+          R$ 27<small>pagamento único</small>
+        </div>
+        <a class="btn" href="#gumroad-ia-analista" target="_blank" rel="noopener">Comprar</a>
+      </div>
+    </article>
+
+    <!-- Lucre com Sites -->
+    <article class="card">
+      <span class="card-tag">Renda Extra</span>
+      <h3>Lucre Criando Sites com IA</h3>
+      <p>Crie sites profissionais usando IA e venda para clientes locais ou globais. O guia definitivo para quem quer faturar sem saber programar.</p>
+      <div class="card-footer">
+        <div class="preco">
+          R$ 17<small>pagamento único</small>
+        </div>
+        <a class="btn" href="#gumroad-sites-ia" target="_blank" rel="noopener">Comprar</a>
+      </div>
+    </article>
+
+    <!-- Lucre com Ebooks -->
+    <article class="card">
+      <span class="card-tag">Renda Extra</span>
+      <h3>Lucre Criando E-books com IA</h3>
+      <p>Do tema ao arquivo final: como criar, precificar e vender ebooks usando IA como co-autor. Modelo replicável e escalável.</p>
+      <div class="card-footer">
+        <div class="preco">
+          R$ 17<small>pagamento único</small>
+        </div>
+        <a class="btn" href="#gumroad-ebooks-ia" target="_blank" rel="noopener">Comprar</a>
+      </div>
+    </article>
+
+    <!-- Lucre com Vídeos -->
+    <article class="card">
+      <span class="card-tag">Renda Extra</span>
+      <h3>Lucre com Cortes de Vídeo</h3>
+      <p>Como ganhar dinheiro editando cortes de vídeo para criadores de conteúdo. Ferramentas, precificação e como conseguir clientes rápido.</p>
+      <div class="card-footer">
+        <div class="preco">
+          R$ 17<small>pagamento único</small>
+        </div>
+        <a class="btn" href="#gumroad-videos" target="_blank" rel="noopener">Comprar</a>
+      </div>
+    </article>
+
+    <!-- Lucre com Imagens -->
+    <article class="card">
+      <span class="card-tag">Renda Extra</span>
+      <h3>Lucre Criando Imagens com IA</h3>
+      <p>Midjourney, DALL-E e afins: como vender imagens geradas por IA em marketplaces, para clientes e como produto digital.</p>
+      <div class="card-footer">
+        <div class="preco">
+          R$ 17<small>pagamento único</small>
+        </div>
+        <a class="btn" href="#gumroad-imagens-ia" target="_blank" rel="noopener">Comprar</a>
+      </div>
+    </article>
+
+    <!-- Lucre com Apresentações -->
+    <article class="card">
+      <span class="card-tag">Renda Extra</span>
+      <h3>Lucre com Apresentações Profissionais</h3>
+      <p>Crie slides de alto nível para empresas e executivos. Como precificar, prospectar clientes e entregar apresentações que vendem.</p>
+      <div class="card-footer">
+        <div class="preco">
+          R$ 17<small>pagamento único</small>
+        </div>
+        <a class="btn" href="#gumroad-apresentacoes" target="_blank" rel="noopener">Comprar</a>
+      </div>
+    </article>
+
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ── SEÇÃO: LITERATURA ── -->
+<section class="secao" id="literatura">
+  <div class="secao-header">
+    <div class="secao-linha"></div>
+    <h2 class="secao-titulo">Literatura</h2>
+    <div class="secao-linha"></div>
+  </div>
+
+  <div class="grid">
+    <article class="card card-poema">
+      <img class="card-capa" src="assets/capa_poema_do_dia.jpg" alt="Capa do livro Seu Poema do Dia">
+      <div class="card-corpo">
+        <span class="card-tag">Poesia</span>
+        <h3>Seu Poema do Dia</h3>
+        <p>76 reflexões em prosa poética sobre amor, tempo e presença. Uma coleção para ler devagar, uma por dia — ou todas de uma vez.</p>
+        <div class="card-footer">
+          <div class="preco">
+            R$ 19,90<small>e-book EPUB/PDF</small>
+          </div>
+          <a class="btn btn-outline" href="#gumroad-poema-do-dia" target="_blank" rel="noopener">Comprar</a>
+        </div>
+      </div>
+    </article>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ── SEÇÃO: BOTS ── -->
+<section class="secao" id="bots">
+  <div class="secao-header">
+    <div class="secao-linha"></div>
+    <h2 class="secao-titulo">Bots de Investimento</h2>
+    <div class="secao-linha"></div>
+  </div>
+
+  <div class="grid">
+
+    <!-- Bot 1 — placeholder, usuário preenche -->
+    <article class="card card-bot">
+      <div class="bot-icone">🤖</div>
+      <span class="card-tag">Bot IA <span class="badge-novo">Novo</span></span>
+      <h3>Bot de Análise de Investimentos</h3>
+      <p>Acesso ao assistente inteligente treinado para análise de ativos, estratégias de carteira e respostas sobre o mercado financeiro. Disponível 24h.</p>
+      <div class="card-footer">
+        <div class="preco">
+          R$ 47<small>acesso vitalício</small>
+        </div>
+        <a class="btn" href="#gumroad-bot-1" target="_blank" rel="noopener">Acessar</a>
+      </div>
+    </article>
+
+    <!-- Bot 2 — placeholder -->
+    <article class="card card-bot">
+      <div class="bot-icone">📊</div>
+      <span class="card-tag">Bot IA <span class="badge-novo">Novo</span></span>
+      <h3>Bot de Planejamento Financeiro</h3>
+      <p>Organização de orçamento, simulações de investimento e planejamento de metas. Um consultor financeiro no seu bolso, disponível sempre.</p>
+      <div class="card-footer">
+        <div class="preco">
+          R$ 47<small>acesso vitalício</small>
+        </div>
+        <a class="btn" href="#gumroad-bot-2" target="_blank" rel="noopener">Acessar</a>
+      </div>
+    </article>
+
+  </div>
+
+  <p style="margin-top: 1.5rem; font-size: 0.82rem; color: var(--cinza); text-align: center;">
+    Os bots funcionam via Gemini (Google). Após a compra você recebe o link de acesso direto — sem instalação.
+  </p>
+</section>
+
+<!-- ── FOOTER ── -->
+<footer>
+  <div class="footer-logo">BiblioTech</div>
+  <p>Criado por <a href="mailto:eliel.gabriel@icloud.com">Eliel Cesário</a> · eliel.gabriel@icloud.com</p>
+  <p style="margin-top: 0.75rem; font-size: 0.75rem; opacity: 0.5;">
+    Todos os direitos reservados &copy; 2026
+  </p>
+</footer>
+
+</body>
+</html>
