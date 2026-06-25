@@ -359,62 +359,77 @@ footer .footer-logo {
 footer a { color: var(--cinza); transition: color 0.2s; }
 footer a:hover { color: var(--branco); }
 
-/* ── HAMBÚRGUER ── */
-.menu-btn {
-  display: none;
-  flex-direction: column;
+/* ── SOBRE ── */
+.sobre-bloco {
+  max-width: 780px;
+  margin: 0 auto;
+}
+
+.sobre-nome {
+  font-family: 'EB Garamond', Georgia, serif;
+  font-size: 1.6rem;
+  font-style: italic;
+  color: var(--branco);
+  margin-bottom: 0.1rem !important;
+}
+
+.sobre-cargo {
+  font-size: 0.8rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--dourado);
+  margin-bottom: 1.5rem !important;
+}
+
+.sobre-texto p {
+  color: var(--cinza);
+  font-size: 0.95rem;
+  line-height: 1.75;
+  margin-bottom: 1rem;
+}
+
+.sobre-texto strong { color: var(--branco); font-weight: 600; }
+
+.sobre-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 1.5rem;
+}
+
+.sobre-badges span {
+  background: var(--dourado-fundo);
+  border: 1px solid rgba(201, 168, 76, 0.25);
+  color: var(--dourado-claro);
+  font-size: 0.75rem;
+  padding: 0.3rem 0.75rem;
+  border-radius: 999px;
+}
+
+/* ── FOOTER CONTATOS ── */
+.footer-contatos {
+  display: flex;
+  flex-wrap: wrap;
   justify-content: center;
-  gap: 5px;
-  width: 36px;
-  height: 36px;
-  background: transparent;
-  border: 1px solid var(--borda);
-  border-radius: 6px;
-  cursor: pointer;
-  padding: 8px;
+  gap: 0.75rem 1.5rem;
+  margin-bottom: 0.5rem;
 }
 
-.menu-btn span {
-  display: block;
-  width: 100%;
-  height: 2px;
-  background: var(--branco);
-  border-radius: 2px;
-  transition: transform 0.25s, opacity 0.25s;
+.contato-link {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--cinza);
+  font-size: 0.85rem;
+  transition: color 0.2s;
 }
 
-.menu-btn.aberto span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
-.menu-btn.aberto span:nth-child(2) { opacity: 0; }
-.menu-btn.aberto span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+.contato-link:hover { color: var(--dourado); }
 
 /* ── RESPONSIVE ── */
 @media (max-width: 600px) {
   header { padding: 1rem; }
-  .menu-btn { display: flex; }
-
-  nav {
-    display: none;
-    position: absolute;
-    top: 100%;
-    left: 0;
-    right: 0;
-    background: var(--azul-card);
-    border-bottom: 1px solid var(--borda);
-    flex-direction: column;
-    padding: 0.5rem 0;
-  }
-
-  nav.aberto { display: flex; }
-
-  nav a {
-    margin: 0;
-    padding: 0.85rem 1.5rem;
-    border-bottom: 1px solid var(--borda);
-    font-size: 0.95rem;
-  }
-
-  nav a:last-child { border-bottom: none; }
-
+  nav { display: none; }
   .hero { padding: 3rem 1.25rem 2.5rem; }
   .secao { padding: 2.5rem 1.25rem; }
   .card-poema { flex-direction: column; }
