@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <!-- Veios dourados — fluxo orgânico principal -->
+    <filter id="a" x="0" y="0" width="100%" height="100%" color-interpolation-filters="sRGB">
+      <feTurbulence type="turbulence" baseFrequency="0.005 0.016" numOctaves="6" seed="42"/>
+      <feColorMatrix type="matrix" values="0 0 .79 0 0  0 0 .66 0 0  0 0 .30 0 0  0 0 13 0 -7.8"/>
+    </filter>
+    <!-- Veios brancos — cruzados em ângulo diferente -->
+    <filter id="b" x="0" y="0" width="100%" height="100%" color-interpolation-filters="sRGB">
+      <feTurbulence type="turbulence" baseFrequency="0.008 0.022" numOctaves="5" seed="7"/>
+      <feColorMatrix type="matrix" values="0 0 1 0 0  0 0 1 0 0  0 0 1 0 0  0 0 11 0 -8.2"/>
+    </filter>
+    <!-- Veios dourados secundários — mais finos -->
+    <filter id="c" x="0" y="0" width="100%" height="100%" color-interpolation-filters="sRGB">
+      <feTurbulence type="turbulence" baseFrequency="0.012 0.035" numOctaves="4" seed="99"/>
+      <feColorMatrix type="matrix" values="0 0 .79 0 0  0 0 .66 0 0  0 0 .30 0 0  0 0 16 0 -11.5"/>
+    </filter>
+  </defs>
+  <rect width="1200" height="900" filter="url(#a)" opacity=".55"/>
+  <rect width="1200" height="900" filter="url(#b)" opacity=".22"/>
+  <rect width="1200" height="900" filter="url(#c)" opacity=".35"/>
+</svg>
