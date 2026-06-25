@@ -18,13 +18,16 @@
     <span class="logo">BiblioTech</span>
     <span class="logo-slogan">"Não são admitidos ignorantes em geometria." — Platão</span>
   </div>
-  <nav>
-    <a href="#dados">Dados & BI</a>
-    <a href="#ia">IA & Renda</a>
-    <a href="#literatura">Literatura</a>
-    <a href="#bots">Bots</a>
+  <nav id="nav-menu">
+    <a href="#dados" onclick="fecharMenu()">Dados & BI</a>
+    <a href="#ia" onclick="fecharMenu()">IA & Renda</a>
+    <a href="#literatura" onclick="fecharMenu()">Literatura</a>
+    <a href="#bots" onclick="fecharMenu()">Bots</a>
     <a href="mailto:eliel.gabriel@icloud.com">Contato</a>
   </nav>
+  <button class="menu-btn" id="menu-btn" onclick="toggleMenu()" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
 </header>
 
 <!-- ── HERO ── -->
@@ -291,5 +294,17 @@
   </p>
 </footer>
 
+<script>
+  function toggleMenu() {
+    const nav = document.getElementById('nav-menu');
+    const btn = document.getElementById('menu-btn');
+    nav.classList.toggle('aberto');
+    btn.classList.toggle('aberto');
+  }
+  function fecharMenu() {
+    document.getElementById('nav-menu').classList.remove('aberto');
+    document.getElementById('menu-btn').classList.remove('aberto');
+  }
+</script>
 </body>
 </html>
