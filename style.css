@@ -359,6 +359,14 @@ footer .footer-logo {
 footer a { color: var(--cinza); transition: color 0.2s; }
 footer a:hover { color: var(--branco); }
 
+/* ── NOTA BRL ── */
+.nota-brl {
+  margin-top: 1rem;
+  font-size: 0.75rem;
+  color: var(--cinza);
+  opacity: 0.6;
+}
+
 /* ── SOBRE ── */
 .sobre-bloco {
   max-width: 780px;
