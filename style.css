@@ -37,12 +37,27 @@ header {
   z-index: 100;
 }
 
+.logo-bloco {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
 .logo {
   font-family: 'EB Garamond', Georgia, serif;
   font-size: 1.4rem;
   font-style: italic;
   color: var(--dourado);
   letter-spacing: 0.02em;
+}
+
+.logo-slogan {
+  font-size: 1.14rem;
+  margin-top: -0.35rem;
+  font-style: italic;
+  color: var(--cinza);
+  letter-spacing: 0.01em;
+  font-family: 'EB Garamond', Georgia, serif;
 }
 
 nav a {
@@ -344,10 +359,62 @@ footer .footer-logo {
 footer a { color: var(--cinza); transition: color 0.2s; }
 footer a:hover { color: var(--branco); }
 
+/* ── HAMBÚRGUER ── */
+.menu-btn {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 36px;
+  height: 36px;
+  background: transparent;
+  border: 1px solid var(--borda);
+  border-radius: 6px;
+  cursor: pointer;
+  padding: 8px;
+}
+
+.menu-btn span {
+  display: block;
+  width: 100%;
+  height: 2px;
+  background: var(--branco);
+  border-radius: 2px;
+  transition: transform 0.25s, opacity 0.25s;
+}
+
+.menu-btn.aberto span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.menu-btn.aberto span:nth-child(2) { opacity: 0; }
+.menu-btn.aberto span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
 /* ── RESPONSIVE ── */
 @media (max-width: 600px) {
   header { padding: 1rem; }
-  nav { display: none; }
+  .menu-btn { display: flex; }
+
+  nav {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: var(--azul-card);
+    border-bottom: 1px solid var(--borda);
+    flex-direction: column;
+    padding: 0.5rem 0;
+  }
+
+  nav.aberto { display: flex; }
+
+  nav a {
+    margin: 0;
+    padding: 0.85rem 1.5rem;
+    border-bottom: 1px solid var(--borda);
+    font-size: 0.95rem;
+  }
+
+  nav a:last-child { border-bottom: none; }
+
   .hero { padding: 3rem 1.25rem 2.5rem; }
   .secao { padding: 2.5rem 1.25rem; }
   .card-poema { flex-direction: column; }
