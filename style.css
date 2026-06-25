@@ -15,6 +15,14 @@
 
 body {
   background-color: var(--azul-noite);
+  background-image:
+    radial-gradient(ellipse at 18% 22%, rgba(255,255,255,0.038) 0%, transparent 42%),
+    radial-gradient(ellipse at 78% 75%, rgba(255,255,255,0.022) 0%, transparent 38%),
+    radial-gradient(ellipse at 50% 50%, rgba(255,255,255,0.01) 0%, transparent 70%),
+    linear-gradient(128deg, transparent 12%, rgba(255,255,255,0.02) 26%, transparent 40%),
+    linear-gradient(218deg, transparent 18%, rgba(255,255,255,0.014) 36%, transparent 54%),
+    linear-gradient(82deg,  transparent 8%,  rgba(201,168,76,0.028) 33%, transparent 56%),
+    linear-gradient(162deg, transparent 22%, rgba(255,255,255,0.012) 44%, transparent 64%);
   color: var(--branco);
   font-family: 'Inter', system-ui, sans-serif;
   line-height: 1.6;
@@ -194,13 +202,16 @@ nav a:hover { color: var(--branco); }
   display: flex;
   flex-direction: column;
   gap: 0.75rem;
-  transition: border-color 0.2s, transform 0.2s, box-shadow 0.2s;
+  transition: border-color 0.25s, transform 0.25s, box-shadow 0.25s;
 }
 
 .card:hover {
-  border-color: rgba(201, 168, 76, 0.4);
-  transform: translateY(-2px);
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+  border-color: var(--dourado);
+  transform: translateY(-6px);
+  box-shadow:
+    0 0 0 1px var(--dourado),
+    0 20px 48px rgba(0, 0, 0, 0.55),
+    0 0 28px rgba(201, 168, 76, 0.1);
 }
 
 .card-capa {
