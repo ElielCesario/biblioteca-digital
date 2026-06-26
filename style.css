@@ -337,6 +337,35 @@ nav a:hover { color: var(--branco); }
   vertical-align: middle;
 }
 
+/* ── CARD DUPLO — OPÇÕES DE COMPRA ── */
+.card-opcoes {
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+  margin-top: 0.5rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--borda);
+}
+
+.opcao-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+}
+
+.opcao-label {
+  font-size: 0.7rem;
+  color: var(--cinza);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 0.1rem;
+}
+
+.opcao-preco {
+  font-size: 1rem;
+}
+
 /* ── DIVIDER ── */
 .divider {
   width: 100%;
