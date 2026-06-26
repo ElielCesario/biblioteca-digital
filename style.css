@@ -368,6 +368,96 @@ nav a:hover { color: var(--branco); }
   font-size: 1rem;
 }
 
+/* ── NAV AFILIADO ── */
+nav .nav-afiliado {
+  color: var(--dourado);
+  border: 1px solid rgba(201, 168, 76, 0.35);
+  padding: 0.28rem 0.75rem;
+  border-radius: 5px;
+  font-weight: 500;
+  transition: background 0.2s, color 0.2s;
+}
+nav .nav-afiliado:hover {
+  background: var(--dourado-fundo);
+  color: var(--dourado-claro);
+}
+
+/* ── AFILIADOS ── */
+.afiliado-bloco {
+  max-width: 820px;
+  margin: 0 auto;
+}
+
+.afiliado-intro {
+  text-align: center;
+  color: var(--cinza);
+  font-size: 1rem;
+  line-height: 1.75;
+  margin-bottom: 2.5rem;
+}
+
+.afiliado-intro strong { color: var(--branco); }
+
+.afiliado-passos {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+}
+
+.afiliado-passo {
+  flex: 1;
+  background: var(--azul-card);
+  border: 1px solid var(--borda);
+  border-radius: 10px;
+  padding: 1.5rem 1.25rem;
+  text-align: center;
+  transition: border-color 0.25s;
+}
+
+.afiliado-passo:hover { border-color: rgba(201, 168, 76, 0.4); }
+
+.afiliado-num {
+  display: block;
+  font-size: 0.68rem;
+  letter-spacing: 0.12em;
+  color: var(--dourado);
+  font-weight: 700;
+  margin-bottom: 0.6rem;
+  text-transform: uppercase;
+}
+
+.afiliado-passo h3 {
+  font-family: 'EB Garamond', Georgia, serif;
+  font-size: 1.15rem;
+  color: var(--branco);
+  margin-bottom: 0.5rem;
+}
+
+.afiliado-passo p {
+  font-size: 0.84rem;
+  color: var(--cinza);
+  line-height: 1.55;
+}
+
+.afiliado-seta {
+  color: var(--dourado);
+  font-size: 1.3rem;
+  padding-top: 2.1rem;
+  opacity: 0.4;
+  flex-shrink: 0;
+}
+
+.afiliado-cta {
+  text-align: center;
+  margin-top: 2.5rem;
+}
+
+.afiliado-btn {
+  font-size: 0.88rem;
+  padding: 0.7rem 2rem;
+  border-radius: 8px;
+}
+
 /* ── BOTÃO FLUTUANTE — CONSULTORIA ── */
 @keyframes pulso-dourado {
   0%   { box-shadow: 0 4px 24px rgba(0,0,0,0.45), 0 0 0 0 rgba(201,168,76,0.8); }
@@ -528,6 +618,8 @@ footer a:hover { color: var(--branco); }
   .card-poema { flex-direction: column; }
   .card-poema .card-capa { width: 100%; aspect-ratio: 3/2; object-position: top; }
   .btn-flutuante { bottom: 1.25rem; right: 1rem; }
+  .afiliado-passos { flex-direction: column; }
+  .afiliado-seta { display: none; }
   body {
     background-image:
       linear-gradient(rgba(5,8,14,0.62), rgba(5,8,14,0.62)),
