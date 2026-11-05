@@ -246,15 +246,24 @@ nav a:hover { color: var(--branco); }
   display: flex;
   align-items: center;
   justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.75rem;
   margin-top: 0.5rem;
   padding-top: 1rem;
   border-top: 1px solid var(--borda);
+}
+
+.card-footer .btn[data-whatsapp] {
+  flex: 1 0 auto;
+  text-align: center;
+  white-space: nowrap;
 }
 
 .preco {
   font-size: 1.1rem;
   font-weight: 600;
   color: var(--branco);
+  white-space: nowrap;
 }
 
 .preco small {
