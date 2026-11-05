@@ -53,7 +53,28 @@
     #literatura .nota-brl { text-align: center; }
     .chamada-trilha .link-sep { color: var(--cinza); margin: 0 0.4rem; }
     /* Recados */
-    .recados-lista { margin-bottom: 1.25rem; }
+    /* Carrossel de recados: centro em destaque, 2 de cada lado menores */
+    .recados-carrossel { position: relative; max-width: 1100px; margin: 0 auto 2rem; overflow: hidden; padding: 1rem 0; }
+    .recados-palco { position: relative; height: 260px; }
+    .recados-palco .card {
+      position: absolute; top: 0; left: 50%; width: 340px; margin-left: -170px;
+      transition: transform 0.45s ease, opacity 0.45s ease, filter 0.45s ease, border-color 0.25s, box-shadow 0.25s;
+      cursor: pointer;
+    }
+    .recados-palco .card.centro { border-color: var(--dourado); cursor: default; }
+    .recados-seta {
+      position: absolute; top: 50%; z-index: 10; transform: translateY(-50%);
+      width: 2.6rem; height: 2.6rem; border-radius: 50%; cursor: pointer;
+      background: var(--azul-card); border: 1px solid var(--dourado); color: var(--dourado);
+      font-size: 1.4rem; line-height: 1; font-family: inherit; transition: background 0.2s;
+    }
+    .recados-seta:hover { background: var(--azul-hover); }
+    .recados-seta-esq { left: 0.25rem; }
+    .recados-seta-dir { right: 0.25rem; }
+    @media (max-width: 600px) {
+      .recados-palco .card { width: 76vw; margin-left: -38vw; }
+      .recados-seta { width: 2.2rem; height: 2.2rem; font-size: 1.2rem; }
+    }
     .recado-form { max-width: 620px; margin: 0 auto; }
     .recado-form label { font-size: 0.75rem; color: var(--cinza); letter-spacing: 0.04em; display: flex; flex-direction: column; gap: 0.35rem; }
     .recado-form input, .recado-form textarea {
@@ -71,7 +92,7 @@
     .aviso-pagamento .card:hover { transform: none; }
     .aviso-pagamento .hero-botoes { margin-top: 0.5rem; }
     .aviso-pagamento button { font-family: inherit; }
-    .aviso-pagamento[hidden], .recados-lista[hidden], .recado-status[hidden] { display: none; }
+    .aviso-pagamento[hidden], .recados-carrossel[hidden], .recados-seta[hidden], .recado-status[hidden] { display: none; }
   </style>
 </head>
 <body>
@@ -588,7 +609,11 @@
   </div>
   <p class="secao-sub">Fez uma trilha, leu um ebook, usa um Agent ou passou pela mentoria? Deixe seu recado sobre a experiência.</p>
 
-  <div class="grid recados-lista" id="recados-lista" hidden></div>
+  <div class="recados-carrossel" id="recados-carrossel" hidden>
+    <button class="recados-seta recados-seta-esq" type="button" aria-label="Recado anterior">&#8249;</button>
+    <div class="recados-palco" id="recados-lista"></div>
+    <button class="recados-seta recados-seta-dir" type="button" aria-label="Próximo recado">&#8250;</button>
+  </div>
 
   <form class="card recado-form" id="recado-form">
     <span class="card-tag">Deixe seu recado</span>
@@ -885,6 +910,54 @@
 
     function semAcento(t) { return t.normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase(); }
 
+
+    // Carrossel: o card do centro em destaque, até 2 de cada lado (1 no celular)
+    function montarCarrossel() {
+      var carrossel = document.getElementById('recados-carrossel');
+      var cards = Array.prototype.slice.call(lista.children);
+      var total = cards.length, atual = 0;
+      carrossel.hidden = false;
+      carrossel.querySelectorAll('.recados-seta').forEach(function (s) { s.hidden = total < 2; });
+
+      function posicionar() {
+        var celular = window.innerWidth <= 600;
+        var maxLado = celular ? 1 : 2;
+        var altura = 0;
+        cards.forEach(function (card, i) {
+          var d = (i - atual + total) % total;
+          if (d > total / 2) d -= total;            // distância até o centro, dando a volta
+          var lado = Math.abs(d), sinal = d < 0 ? -1 : 1;
+          var desloc = celular ? [0, 82, 120][Math.min(lado, 2)] : [0, 62, 112, 150][Math.min(lado, 3)];
+          var escala = [1, 0.86, 0.72, 0.6][Math.min(lado, 3)];
+          card.style.transform = 'translateX(' + (sinal * desloc) + '%) scale(' + escala + ')';
+          card.style.opacity = lado > maxLado ? 0 : 1;
+          card.style.filter = lado === 0 ? '' : 'brightness(' + (lado === 1 ? 0.6 : 0.4) + ')';
+          card.style.zIndex = 5 - lado;
+          card.style.pointerEvents = lado > maxLado ? 'none' : '';
+          card.classList.toggle('centro', lado === 0);
+          altura = Math.max(altura, card.offsetHeight);
+        });
+        lista.style.height = altura + 'px';
+      }
+      function ir(passo) { atual = (atual + passo + total) % total; posicionar(); }
+
+      carrossel.querySelector('.recados-seta-esq').addEventListener('click', function () { ir(-1); });
+      carrossel.querySelector('.recados-seta-dir').addEventListener('click', function () { ir(1); });
+      cards.forEach(function (card, i) {
+        card.addEventListener('click', function () { atual = i; posicionar(); });
+      });
+      var toqueX = null;
+      lista.addEventListener('touchstart', function (e) { toqueX = e.touches[0].clientX; }, { passive: true });
+      lista.addEventListener('touchend', function (e) {
+        if (toqueX === null) return;
+        var dx = e.changedTouches[0].clientX - toqueX;
+        if (Math.abs(dx) > 40) ir(dx < 0 ? 1 : -1);
+        toqueX = null;
+      });
+      window.addEventListener('resize', posicionar);
+      posicionar();
+    }
+
     if (!RECADOS.planilhaCsv) return;
     fetch(RECADOS.planilhaCsv)
       .then(function (r) { return r.text(); })
@@ -909,7 +982,7 @@
           card.append(tag, h3, p);
           lista.appendChild(card);
         });
-        if (aprovados.length) lista.hidden = false;
+        if (aprovados.length) montarCarrossel();
       })
       .catch(function () {});
   })();
