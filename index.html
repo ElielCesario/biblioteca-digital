@@ -51,6 +51,27 @@
     .mentoria-lista { color: var(--cinza); font-size: 0.95rem; line-height: 1.75; margin: -0.5rem 0 1rem 1.25rem; }
     .afiliado-comissao { margin: 2rem 0 0; font-size: 0.9rem; }
     #literatura .nota-brl { text-align: center; }
+    .chamada-trilha .link-sep { color: var(--cinza); margin: 0 0.4rem; }
+    /* Recados */
+    .recados-lista { margin-bottom: 1.25rem; }
+    .recado-form { max-width: 620px; margin: 0 auto; }
+    .recado-form label { font-size: 0.75rem; color: var(--cinza); letter-spacing: 0.04em; display: flex; flex-direction: column; gap: 0.35rem; }
+    .recado-form input, .recado-form textarea {
+      font: inherit; font-size: 0.9rem; color: var(--branco); background: var(--azul-noite);
+      border: 1px solid var(--borda); border-radius: 6px; padding: 0.6rem 0.75rem; width: 100%;
+    }
+    .recado-form textarea { min-height: 110px; resize: vertical; }
+    .recado-form input:focus, .recado-form textarea:focus { outline: none; border-color: var(--dourado); }
+    .recado-form .btn { border: 0; font-family: inherit; align-self: flex-start; }
+    .recado-form:hover { transform: none; }
+    .recado-status { font-size: 0.85rem; color: var(--dourado); }
+    /* Aviso depois de abrir o Mercado Pago */
+    .aviso-pagamento { position: fixed; inset: 0; z-index: 300; background: rgba(5, 8, 14, 0.75); display: flex; align-items: center; justify-content: center; padding: 1.25rem; }
+    .aviso-pagamento .card { max-width: 440px; text-align: center; border-color: var(--dourado); }
+    .aviso-pagamento .card:hover { transform: none; }
+    .aviso-pagamento .hero-botoes { margin-top: 0.5rem; }
+    .aviso-pagamento button { font-family: inherit; }
+    .aviso-pagamento[hidden], .recados-lista[hidden], .recado-status[hidden] { display: none; }
   </style>
 </head>
 <body>
@@ -521,7 +542,7 @@
   </div>
 
   <p style="margin-top: 1.5rem; font-size: 0.82rem; color: var(--cinza); text-align: center;">
-    Os Agents funcionam via Gemini e NotebookLM (Google). Após a confirmação do pagamento, você recebe o link de acesso por WhatsApp.
+    Os Agents funcionam via Gemini e NotebookLM (Google). Depois de assinar, me avise no WhatsApp: assim que o pagamento é confirmado, você recebe o link de acesso por lá.
   </p>
 </section>
 
@@ -544,53 +565,45 @@
         <li>Analistas júnior que querem acelerar para pleno</li>
         <li>Profissionais que precisam aplicar IA e automação no trabalho</li>
       </ul>
-      <p>Formato e valor combinados de acordo com seu objetivo. Me chama que eu te explico como funciona.</p>
+      <p>O formato é totalmente personalizado e o valor depende da necessidade de cada cliente. Me chama que eu te explico como funciona.</p>
       <div class="hero-botoes botoes-esquerda">
-        <a class="btn btn-grande" href="https://mpago.la/1xjbo4T" target="_blank" rel="noopener">Quero a mentoria</a>
+        <a class="btn btn-grande" href="https://mpago.la/1xjbo4T" data-produto="Mentoria individual em Dados" target="_blank" rel="noopener">Quero a mentoria</a>
         <a class="btn btn-outline btn-grande" href="#" data-whatsapp="Mentoria individual" target="_blank" rel="noopener">Tirar dúvidas no WhatsApp</a>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ── SEÇÃO: DEPOIMENTOS (oculta até ter pelo menos 2 depoimentos reais) ── -->
-<div hidden>
-  <div class="divider"></div>
-  <section class="secao" id="depoimentos">
-    <div class="secao-header">
-      <div class="secao-linha"></div>
-      <h2 class="secao-titulo">Quem já passou por aqui</h2>
-      <div class="secao-linha"></div>
-    </div>
+<div class="divider"></div>
 
-    <div class="grid">
-      <article class="card">
-        <!-- [PREENCHER] contexto curto, ex.: "Aluno da mentoria" -->
-        <span class="card-tag"></span>
-        <!-- [PREENCHER] nome -->
-        <h3></h3>
-        <!-- [PREENCHER] depoimento real -->
-        <p></p>
-      </article>
-      <article class="card">
-        <!-- [PREENCHER] contexto curto -->
-        <span class="card-tag"></span>
-        <!-- [PREENCHER] nome -->
-        <h3></h3>
-        <!-- [PREENCHER] depoimento real -->
-        <p></p>
-      </article>
-      <article class="card">
-        <!-- [PREENCHER] contexto curto -->
-        <span class="card-tag"></span>
-        <!-- [PREENCHER] nome -->
-        <h3></h3>
-        <!-- [PREENCHER] depoimento real -->
-        <p></p>
-      </article>
-    </div>
-  </section>
-</div>
+<!-- ── SEÇÃO: RECADOS (depoimentos dos alunos) ──
+     Os recados entram por um Google Forms e só aparecem no site depois que você
+     escrever "sim" na coluna "Aprovado" da planilha. Configuração no script RECADOS, no fim da página. -->
+<section class="secao" id="recados">
+  <div class="secao-header">
+    <div class="secao-linha"></div>
+    <h2 class="secao-titulo">Recados de quem passou por aqui</h2>
+    <div class="secao-linha"></div>
+  </div>
+  <p class="secao-sub">Fez uma trilha, leu um ebook, usa um Agent ou passou pela mentoria? Deixe seu recado sobre a experiência.</p>
+
+  <div class="grid recados-lista" id="recados-lista" hidden></div>
+
+  <form class="card recado-form" id="recado-form">
+    <span class="card-tag">Deixe seu recado</span>
+    <label>Seu nome
+      <input name="nome" required maxlength="60" autocomplete="name">
+    </label>
+    <label>O que você fez com a BiblioTech? (ex.: Trilha Dados &amp; BI, Agent Gramma, Mentoria)
+      <input name="contexto" maxlength="80">
+    </label>
+    <label>Seu recado
+      <textarea name="mensagem" required maxlength="800"></textarea>
+    </label>
+    <button class="btn btn-grande" type="submit">Enviar recado</button>
+    <p class="recado-status" id="recado-status" hidden></p>
+  </form>
+</section>
 
 <div class="divider"></div>
 
@@ -649,8 +662,12 @@
       </div>
     </article>
   </div>
-  <!-- TODO: colocar o link dos perfis do Seu Poema do Dia (Instagram e TikTok) nesta linha -->
-  <p class="nota-brl">Poemas novos todos os dias no Instagram e TikTok do Seu Poema do Dia.</p>
+  <p class="chamada-trilha">
+    Poemas novos todos os dias no
+    <a href="https://www.instagram.com/seupoemadodia/" target="_blank" rel="noopener">Instagram</a> e no
+    <a href="https://www.tiktok.com/@seupoemadodia" target="_blank" rel="noopener">TikTok</a> do Seu Poema do Dia.
+    <br><a href="poesia.html">Leia uma prévia dos poemas →</a>
+  </p>
 </section>
 
 <div class="divider"></div>
@@ -689,7 +706,7 @@
       <div class="afiliado-passo">
         <span class="afiliado-num">03</span>
         <h3>Ganhe por venda</h3>
-        <p>Cada cliente que chegar pela sua indicação gera comissão para você.</p>
+        <p>Cada cliente que chegar e fechar pela sua indicação gera comissão para você.</p>
       </div>
 
     </div>
@@ -727,12 +744,12 @@
     </a>
   </div>
   <p style="margin-top: 1.5rem; font-size: 0.75rem; opacity: 0.4;">
-    Todos os direitos reservados &copy; 2026
+    Todos os direitos reservados &copy; 2020
   </p>
 </footer>
 
 <!-- ── BOTÃO FLUTUANTE — CONSULTORIA ── -->
-<a class="btn-flutuante" href="https://mpago.la/1xjbo4T" target="_blank" rel="noopener">
+<a class="btn-flutuante" href="https://mpago.la/1xjbo4T" data-produto="Consultoria Pessoal" target="_blank" rel="noopener">
   <span class="btn-flutuante-icone">🤝🏽</span>
   <span class="btn-flutuante-label">Consultoria Pessoal</span>
 </a>
@@ -756,6 +773,145 @@
   document.querySelectorAll('[data-whatsapp], [data-whatsapp-msg]').forEach(function (botao) {
     botao.href = 'https://wa.me/' + WHATSAPP_NUMERO + '?text=' + encodeURIComponent(mensagemDoBotao(botao));
   });
+
+  function linkWhatsApp(msg) {
+    return 'https://wa.me/' + WHATSAPP_NUMERO + '?text=' + encodeURIComponent(msg);
+  }
+</script>
+
+<!-- ── AVISO: aparece quando a pessoa abre um link do Mercado Pago (Agents, mentoria, consultoria) ── -->
+<div class="aviso-pagamento" id="aviso-pagamento" hidden>
+  <div class="card" role="dialog" aria-modal="true" aria-labelledby="aviso-titulo">
+    <span class="card-tag">Pagamento aberto em outra aba</span>
+    <h3 id="aviso-titulo">Depois de pagar, me avise no WhatsApp</h3>
+    <p>Assim eu já vejo seu pedido e inicio seu atendimento o quanto antes.</p>
+    <div class="hero-botoes">
+      <a class="btn btn-grande" id="aviso-whatsapp" href="#" target="_blank" rel="noopener">Avisar no WhatsApp</a>
+      <button class="btn btn-outline btn-grande" type="button" id="aviso-fechar">Fechar</button>
+    </div>
+  </div>
+</div>
+
+<script>
+  (function () {
+    var aviso = document.getElementById('aviso-pagamento');
+    var botaoWhats = document.getElementById('aviso-whatsapp');
+
+    document.querySelectorAll('a[href*="mpago.la"], a[href*="mercadopago.com"]').forEach(function (link) {
+      link.addEventListener('click', function () {
+        var card = link.closest('.card');
+        var produto = link.dataset.produto || (card && card.querySelector('h3').textContent.trim()) || 'um produto';
+        botaoWhats.href = linkWhatsApp(INICIO + ' e acabei de fazer o pagamento de: ' + produto + '. Pode iniciar meu atendimento?');
+        // O Mercado Pago abre em nova aba; o aviso fica esperando aqui quando a pessoa voltar
+        setTimeout(function () { aviso.hidden = false; }, 300);
+      });
+    });
+
+    function fechar() { aviso.hidden = true; }
+    document.getElementById('aviso-fechar').addEventListener('click', fechar);
+    botaoWhats.addEventListener('click', fechar);
+    aviso.addEventListener('click', function (e) { if (e.target === aviso) fechar(); });
+    document.addEventListener('keydown', function (e) { if (e.key === 'Escape') fechar(); });
+  })();
+</script>
+
+<!-- ── RECADOS: Google Forms (envio) + planilha publicada como CSV (leitura) ──
+     Enquanto RECADOS.formulario estiver vazio, o recado é enviado para o seu WhatsApp. -->
+<script>
+  var RECADOS = {
+    // Ex.: 'https://docs.google.com/forms/d/e/1FAIpQL.../formResponse'
+    formulario: '',
+    // Códigos "entry.NNNN" de cada pergunta do formulário
+    campos: { nome: '', contexto: '', mensagem: '' },
+    // Ex.: 'https://docs.google.com/spreadsheets/d/e/2PACX-.../pub?output=csv'
+    planilhaCsv: ''
+  };
+
+  (function () {
+    var form = document.getElementById('recado-form');
+    var status = document.getElementById('recado-status');
+    var lista = document.getElementById('recados-lista');
+
+    function mostrarStatus(texto) { status.textContent = texto; status.hidden = false; }
+
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      var nome = form.nome.value.trim();
+      var contexto = form.contexto.value.trim();
+      var mensagem = form.mensagem.value.trim();
+      if (!nome || !mensagem) return;
+
+      if (!RECADOS.formulario) {
+        var texto = INICIO + ' e quero deixar um recado.\n\nNome: ' + nome +
+          (contexto ? '\nO que fiz: ' + contexto : '') + '\nRecado: ' + mensagem;
+        window.open(linkWhatsApp(texto), '_blank', 'noopener');
+        mostrarStatus('Obrigado! Seu recado foi aberto no WhatsApp, é só enviar.');
+        form.reset();
+        return;
+      }
+
+      var dados = new URLSearchParams();
+      dados.append(RECADOS.campos.nome, nome);
+      if (RECADOS.campos.contexto) dados.append(RECADOS.campos.contexto, contexto);
+      dados.append(RECADOS.campos.mensagem, mensagem);
+      form.querySelector('button').disabled = true;
+      fetch(RECADOS.formulario, { method: 'POST', mode: 'no-cors', body: dados })
+        .then(function () {
+          mostrarStatus('Obrigado pelo recado! Ele aparece aqui assim que for aprovado.');
+          form.reset();
+        })
+        .catch(function () { mostrarStatus('Não consegui enviar agora. Tente de novo em instantes.'); })
+        .then(function () { form.querySelector('button').disabled = false; });
+    });
+
+    // Lê CSV com aspas e quebras de linha dentro dos campos
+    function lerCsv(texto) {
+      var linhas = [], linha = [], campo = '', aspas = false;
+      for (var i = 0; i < texto.length; i++) {
+        var c = texto[i];
+        if (aspas) {
+          if (c === '"' && texto[i + 1] === '"') { campo += '"'; i++; }
+          else if (c === '"') aspas = false;
+          else campo += c;
+        } else if (c === '"') aspas = true;
+        else if (c === ',') { linha.push(campo); campo = ''; }
+        else if (c === '\n') { linha.push(campo); linhas.push(linha); linha = []; campo = ''; }
+        else if (c !== '\r') campo += c;
+      }
+      if (campo || linha.length) { linha.push(campo); linhas.push(linha); }
+      return linhas;
+    }
+
+    function semAcento(t) { return t.normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase(); }
+
+    if (!RECADOS.planilhaCsv) return;
+    fetch(RECADOS.planilhaCsv)
+      .then(function (r) { return r.text(); })
+      .then(function (texto) {
+        var linhas = lerCsv(texto);
+        var cab = (linhas.shift() || []).map(semAcento);
+        function coluna(palavra) { return cab.findIndex(function (h) { return h.indexOf(palavra) !== -1; }); }
+        var cNome = coluna('nome'), cCtx = coluna('o que voce fez'), cMsg = coluna('recado'), cOk = coluna('aprovado');
+        if (cNome < 0 || cMsg < 0 || cOk < 0) return;
+
+        var aprovados = linhas.filter(function (l) { return semAcento(l[cOk] || '').trim() === 'sim'; }).reverse();
+        aprovados.forEach(function (l) {
+          var card = document.createElement('article');
+          card.className = 'card';
+          var tag = document.createElement('span');
+          tag.className = 'card-tag';
+          tag.textContent = cCtx >= 0 ? (l[cCtx] || '') : '';
+          var h3 = document.createElement('h3');
+          h3.textContent = l[cNome];
+          var p = document.createElement('p');
+          p.textContent = l[cMsg];
+          card.append(tag, h3, p);
+          lista.appendChild(card);
+        });
+        if (aprovados.length) lista.hidden = false;
+      })
+      .catch(function () {});
+  })();
 </script>
 
 </body>
